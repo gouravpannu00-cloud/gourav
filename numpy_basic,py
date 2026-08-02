@@ -1,0 +1,32 @@
+          #         0 - D  ARRAY   _____________________________
+import numpy as np
+arr = np.array(40)
+print(arr)
+
+        #    1 - D  ARRAY   _____________________________
+import numpy as np 
+arr = np.array([1, 2, 3, 4, 5])
+print(arr)
+
+             #  2 - D  ARRAY   _____________________________
+import numpy as np
+arr = np.array([[1, 2, 3], [4, 5, 6]])
+print(arr)
+
+            #   3 - D  ARRAY   _____________________________
+import numpy as np 
+arr = np.array([[[1, 2, 3], [4, 5, 6]], [[7, 8, 9], [10, 11, 12]]])
+print(arr)
+
+print(arr.ndim)  # Output: 3       #    NUMBER   OF    DIMMENSIONS
+print(arr.shape)  # Output: (2, 2, 3)   #   SHAPE   OF   ARRAY
+
+
+
+            #    RESHAPE   OF   ARRAY   _____________________________           
+import numpy as np
+arr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12])
+new_arr = arr.reshape(3, 4)       #  3 = rows, 4 = columns
+print(new_arr)
+
+
