@@ -1,0 +1,11 @@
+import matplotlib.pyplot as plt
+x = [1,2,3,4,5]
+y1 = [2,4,6,8,10]
+y2 = [1,2,3,4,5]
+
+plt.plot(x, y1, label="line 1")
+plt.plot(x, y2, label="line 2")
+
+plt.title("Line Plot With LEGEND")
+plt.legend()
+plt.show()
