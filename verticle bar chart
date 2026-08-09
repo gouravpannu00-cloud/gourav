@@ -1,0 +1,8 @@
+import matplotlib.pyplot as plt
+categories = ["A","B","C","D"]
+values = [4,7,2,9]
+plt.bar(categories,values)
+plt.title("Verticle Bar Chat")
+plt.xlabel("categories")
+plt.ylabel("values")
+plt.show()
