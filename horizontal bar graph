@@ -1,0 +1,8 @@
+import matplotlib.pyplot as plt
+categories =["A","B","C","D"]
+values = [4,7,2,9]
+plt.barh(categories,values)
+plt.title("horizontal bar chart")
+plt.xlabel("values")
+plt.ylabel("categories")
+plt.show()
