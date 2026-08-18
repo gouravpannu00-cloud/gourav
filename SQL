@@ -1,0 +1,41 @@
+CREATE DATABASE company;
+-- USE COMPANY
+
+-- CREATE TABLE departments (
+-- department_id  INT PRIMARY KEY ,
+-- department_name VARCHAR (50)
+-- );
+
+-- CREATE TABLE employees(
+-- employee_id INT PRIMARY KEY ,
+-- employee_name VARCHAR (100) ,
+-- department_id INT ,
+-- salary INT ,
+-- manager_id INT ,
+-- city varchar (50),
+-- FOREIGN KEY (department_id) REFERENCES departments (department_id) ,
+-- FOREIGN KEY (manager_id) REFERENCES employees (employee_id)
+-- )
+
+-- INSERT INTO departments
+-- (department_id , department_name) 
+-- VALUES 
+-- (1,"IT"),
+-- (2,"HR"),
+-- (3,"Finance"),
+-- (4, "Marketing");
+
+
+-- INSERT INTO employees
+-- (employee_id, employee_name, salary, city, department_id)
+-- VALUES
+-- (101, 'Rahul', 60000, 'Delhi', 1),
+-- (102, 'Aman', 45000, 'Rohtak', 2),
+-- (103, 'Priya', 75000, 'Gurgaon', 1),
+-- (104, 'Neha', 52000, 'Delhi', 3),
+-- (105, 'Rohit', 40000, 'Rohtak', 4),
+-- (106, 'Anjali', 65000, 'Gurgaon', 3);
+
+-- SELECT * FROM departments;
+
+-- SELECT * FROM employees;
