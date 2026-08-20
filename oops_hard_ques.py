@@ -119,3 +119,209 @@ for person in people:
 
     #   QUES.  4 _______________
 
+import math
+
+class Shape:
+    def area(self):
+        pass
+
+
+class Circle(Shape):
+    def __init__(self, radius):
+        self.radius = radius
+
+    def area(self):
+        return math.pi * self.radius * self.radius
+
+
+class Rectangle(Shape):
+    def __init__(self, length, width):
+        self.length = length
+        self.width = width
+
+    def area(self):
+        return self.length * self.width
+
+
+class Triangle(Shape):
+    def __init__(self, base, height):
+        self.base = base
+        self.height = height
+
+    def area(self):
+        return 0.5 * self.base * self.height
+
+
+shapes = [
+    Circle(5),
+    Rectangle(10, 4),
+    Triangle(8, 6)
+]
+
+for shape in shapes:
+    print("Area:", round(shape.area(), 2))
+
+
+     ##    QUES  5 ____________________________________________
+
+class BankAccount:
+    def __init__(self, name, balance):
+        self.name = name
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount
+        print("Deposited:", amount)
+
+    def withdraw(self, amount):
+        pass
+
+    def show_balance(self):
+        print("Balance:", self.balance)
+
+
+class SavingsAccount(BankAccount):
+    def withdraw(self, amount):
+        if amount <= self.balance:
+            self.balance -= amount
+            print("Savings: Withdraw successful")
+        else:
+            print("Savings: Insufficient balance")
+
+
+class CurrentAccount(BankAccount):
+    def withdraw(self, amount):
+        if amount <= self.balance + 5000:
+            self.balance -= amount
+            print("Current: Withdraw successful")
+        else:
+            print("Current: Withdrawal limit exceeded")
+
+
+accounts = [
+    SavingsAccount("Gourav", 10000),
+    CurrentAccount("Rahul", 5000)
+]
+
+for account in accounts:
+    account.deposit(1000)
+    account.withdraw(7000)
+    account.show_balance()
+
+
+     ###     QUES . 6   =___________________________________
+
+
+class Product:
+    def __init__(self, name, price):
+        self.name = name
+        self.price = price
+
+    def final_price(self):
+        return self.price
+
+
+class Electronics(Product):
+    def __init__(self, name, price, warranty):
+        super().__init__(name, price)
+        self.warranty = warranty
+
+    def final_price(self):
+        return self.price + 500
+
+
+class Clothing(Product):
+    def __init__(self, name, price, size):
+        super().__init__(name, price)
+        self.size = size
+
+    def final_price(self):
+        return self.price * 0.90
+
+
+class Grocery(Product):
+    def __init__(self, name, price, weight):
+        super().__init__(name, price)
+        self.weight = weight
+
+    def final_price(self):
+        return self.price * 0.95
+
+
+products = [
+    Electronics("Laptop", 50000, 2),
+    Clothing("T-Shirt", 1000, "L"),
+    Grocery("Rice", 2000, "10 KG")
+]
+
+for product in products:
+    print(product.name, "Final Price:", product.final_price())
+
+
+##     QUES  . 7  ___________________________________
+
+class UniversityMember:
+    def __init__(self, name):
+        self.name = name
+
+    def activity(self):
+        pass
+
+
+class Student(UniversityMember):
+    def activity(self):
+        print(self.name, "is attending classes.")
+
+
+class Professor(UniversityMember):
+    def activity(self):
+        print(self.name, "is teaching students.")
+
+
+class Researcher(UniversityMember):
+    def activity(self):
+        print(self.name, "is doing research.")
+
+
+members = [
+    Student("Gourav"),
+    Professor("Dr. Sharma"),
+    Researcher("Aman")
+]
+
+for member in members:
+    member.activity()
+
+    #  QUES  8 _________________________
+
+class Transport:
+    def calculate_fare(self, distance):
+        pass
+
+
+class Bus(Transport):
+    def calculate_fare(self, distance):
+        return distance * 5
+
+
+class Train(Transport):
+    def calculate_fare(self, distance):
+        return distance * 3
+
+
+class Flight(Transport):
+    def calculate_fare(self, distance):
+        return distance * 10
+
+
+transports = [
+    Bus(),
+    Train(),
+    Flight()
+]
+
+distance = 100
+
+for transport in transports:
+    print("Fare for", distance, "km:", transport.calculate_fare(distance))
+
