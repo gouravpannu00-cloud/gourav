@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+<h1>
+📅 Driver Attendance
+</h1>
+
+<a class="button"
+href="{{ url_for('add_attendance') }}">
+
++ Add Attendance
+
+</a>
+
+</div>
+
+
+<h2>
+Driver Attendance Summary
+</h2>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Driver</th>
+
+<th>Full Day</th>
+
+<th>Half Day</th>
+
+<th>Total Attendance</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for row in summary %}
+
+<tr>
+
+<td>
+{{ row.driver_name }}
+</td>
+
+<td>
+{{ row.full_days or 0 }}
+</td>
+
+<td>
+{{ row.half_days or 0 }}
+</td>
+
+<td>
+
+{{ (row.full_days or 0)
+   + (row.half_days or 0) }}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<h2 class="section-title">
+Attendance Records
+</h2>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>Driver</th>
+
+<th>Status</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for row in attendance_data %}
+
+<tr>
+
+<td>
+{{ row.attendance_date }}
+</td>
+
+<td>
+{{ row.driver_name }}
+</td>
+
+<td>
+
+<span class="attendance-badge">
+
+{{ row.status }}
+
+</span>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
