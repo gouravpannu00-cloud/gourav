@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+📅 Add Driver Attendance
+</h1>
+
+
+<form
+class="form-box"
+method="POST">
+
+
+<label>
+Date
+</label>
+
+<input
+type="date"
+name="attendance_date"
+required>
+
+
+<label>
+Driver
+</label>
+
+<select
+name="driver_name"
+required>
+
+<option value="">
+Select Driver
+</option>
+
+{% for driver in drivers %}
+
+<option value="{{ driver.name }}">
+
+{{ driver.name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<label>
+Attendance
+</label>
+
+<select
+name="status"
+required>
+
+<option value="Full Day">
+Full Day
+</option>
+
+<option value="Half Day">
+Half Day
+</option>
+
+</select>
+
+
+<button
+class="button"
+type="submit">
+
+Save Attendance
+
+</button>
+
+</form>
+
+{% endblock %}
