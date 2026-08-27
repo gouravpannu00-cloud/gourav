@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        {% block title %}
+        Transport Management System V4.4
+        {% endblock %}
+    </title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+
+<body>
+
+    <div id="stars"></div>
+
+
+    <header class="navbar">
+
+        <div class="logo-area">
+
+            <div class="logo-area">
+
+    <img
+        src="{{ url_for('static', filename='logo.png') }}"
+        class="main-logo"
+        alt="Transport Logo">
+
+
+
+                <h1>
+                    Transport Management System
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="theme-button"
+            onclick="toggleTheme()">
+
+            🌙 Night Mode
+
+        </button>
+
+    </header>
+
+
+    <nav class="menu">
+
+        <a href="{{ url_for('dashboard') }}">
+            🏠 Dashboard
+        </a>
+
+        <a href="{{ url_for('vehicles') }}">
+            🚚 Vehicles
+        </a>
+
+        <a href="{{ url_for('drivers') }}">
+            👨‍✈️ Drivers
+        </a>
+
+        <a href="{{ url_for('routes') }}">
+            🛣️ Routes
+        </a>
+
+        <a href="{{ url_for('expenses') }}">
+            💸 Expenses
+        </a>
+
+        <a href="{{ url_for('attendance') }}">
+            📅 Attendance
+        </a>
+
+        <a href="{{ url_for('route_summary') }}">
+            📊 Summary
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                {% for message in messages %}
+
+                    <div class="flash">
+                        {{ message }}
+                    </div>
+
+                {% endfor %}
+
+            {% endif %}
+
+        {% endwith %}
+
+
+        {% block content %}
+
+        {% endblock %}
+
+    </main>
+
+
+    <script src="{{ url_for('static', filename='script.js') }}">
+    </script>
+
+</body>
+
+</html>
