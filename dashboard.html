@@ -1,0 +1,441 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard - TMS V4.4
+{% endblock %}
+
+
+{% block content %}
+
+
+<div class="dashboard-title">
+
+    <div>
+
+        <h1>
+            🚚 Transport Management System
+        </h1>
+
+        <p>
+            Complete Transport Dashboard
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- ADD BUTTONS -->
+
+<div class="add-grid">
+
+    <a class="add-card"
+       href="{{ url_for('add_vehicle') }}">
+
+        <span>🚚</span>
+
+        <b>Add Vehicle</b>
+
+        <small>
+            Vehicle + Documents
+        </small>
+
+    </a>
+
+
+    <a class="add-card"
+       href="{{ url_for('add_driver') }}">
+
+        <span>👨‍✈️</span>
+
+        <b>Add Driver</b>
+
+        <small>
+            Driver Details
+        </small>
+
+    </a>
+
+
+    <a class="add-card"
+       href="{{ url_for('add_route') }}">
+
+        <span>🛣️</span>
+
+        <b>Add Route</b>
+
+        <small>
+            Route + Fare
+        </small>
+
+    </a>
+
+
+    <a class="add-card"
+       href="{{ url_for('add_expense') }}">
+
+        <span>💸</span>
+
+        <b>Add Expense</b>
+
+        <small>
+            Fuel / Toll / Repair
+        </small>
+
+    </a>
+
+
+    <a class="add-card"
+       href="{{ url_for('add_attendance') }}">
+
+        <span>📅</span>
+
+        <b>Add Attendance</b>
+
+        <small>
+            Full / Half Day
+        </small>
+
+    </a>
+
+
+    <a class="add-card"
+       href="{{ url_for('route_summary') }}">
+
+        <span>📊</span>
+
+        <b>Route Summary</b>
+
+        <small>
+            Date + Fare + Profit
+        </small>
+
+    </a>
+
+</div>
+
+
+<!-- MONTH -->
+
+<h2 class="section-title">
+
+    📅 Monthly Summary
+
+    <span>
+        {{ current_month }}
+
+    </span>
+
+</h2>
+
+
+<!-- 3 ROW x 2 COLUMN -->
+
+<div class="dashboard-grid">
+
+
+    <a class="dashboard-card"
+       href="{{ url_for('vehicles') }}">
+
+        <h3>
+            🚚 Vehicles
+        </h3>
+
+        <strong>
+            {{ vehicle_count }}
+        </strong>
+
+        <span>
+            View Vehicles →
+        </span>
+
+    </a>
+
+
+    <a class="dashboard-card"
+       href="{{ url_for('drivers') }}">
+
+        <h3>
+            👨‍✈️ Drivers
+        </h3>
+
+        <strong>
+            {{ driver_count }}
+        </strong>
+
+        <span>
+            View Drivers →
+        </span>
+
+    </a>
+
+
+    <a class="dashboard-card"
+       href="{{ url_for('routes') }}">
+
+        <h3>
+            🛣️ Routes
+        </h3>
+
+        <strong>
+            {{ route_count }}
+        </strong>
+
+        <span>
+            View Routes →
+        </span>
+
+    </a>
+
+
+    <a class="dashboard-card money-card"
+       href="{{ url_for('route_summary') }}">
+
+        <h3>
+            💰 Monthly Fare
+        </h3>
+
+        <strong>
+            ₹{{ "%.2f"|format(monthly_fare) }}
+        </strong>
+
+        <span>
+            Current Month
+        </span>
+
+    </a>
+
+
+    <a class="dashboard-card money-card"
+       href="{{ url_for('route_summary') }}">
+
+        <h3>
+            💸 Monthly Expense
+        </h3>
+
+        <strong>
+            ₹{{ "%.2f"|format(monthly_expense) }}
+        </strong>
+
+        <span>
+            Current Month
+        </span>
+
+    </a>
+
+
+    <a class="dashboard-card money-card"
+       href="{{ url_for('route_summary') }}">
+
+        <h3>
+            📈 Monthly Profit
+        </h3>
+
+        <strong>
+            ₹{{ "%.2f"|format(monthly_profit) }}
+        </strong>
+
+        <span>
+            Fare - Expense
+        </span>
+
+    </a>
+
+</div>
+
+
+<!-- DOCUMENT NOTIFICATION -->
+
+<div class="notification-section">
+
+    <div class="section-heading">
+
+        <h2>
+            🔔 Vehicle Document Notifications
+        </h2>
+
+        <a href="{{ url_for('vehicles') }}">
+            Manage Documents →
+        </a>
+
+    </div>
+
+
+    {% if document_notifications %}
+
+        {% for notification
+             in document_notifications %}
+
+            <div class="notification
+                {{ notification.status }}">
+
+                {% if notification.status == "expired" %}
+
+                    ❌
+
+                    <b>
+                        {{ notification.vehicle_no }}
+                    </b>
+
+                    -
+
+                    {{ notification.document_name }}
+
+                    expired on
+
+                    <b>
+                        {{ notification.valid_until }}
+                    </b>
+
+                {% else %}
+
+                    ⚠️
+
+                    <b>
+                        {{ notification.vehicle_no }}
+                    </b>
+
+                    -
+
+                    {{ notification.document_name }}
+
+                    expires on
+
+                    <b>
+                        {{ notification.valid_until }}
+                    </b>
+
+                    <span>
+
+                        {{ notification.days_left }}
+                        days left
+
+                    </span>
+
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <div class="notification safe">
+
+            ✅
+
+            No vehicle documents are
+            expiring within 30 days.
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+<!-- ROUTE SUMMARY -->
+
+<div class="summary-box">
+
+    <div class="section-heading">
+
+        <h2>
+            🛣️ Recent Route Summary
+        </h2>
+
+        <a href="{{ url_for('route_summary') }}">
+            View All →
+        </a>
+
+    </div>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Date</th>
+
+                    <th>Vehicle</th>
+
+                    <th>Driver</th>
+
+                    <th>Route</th>
+
+                    <th>Fare</th>
+
+                    <th>Expense</th>
+
+                    <th>Profit</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                {% for route in recent_routes %}
+
+                <tr>
+
+                    <td>
+                        {{ route.date }}
+                    </td>
+
+                    <td>
+                        {{ route.vehicle }}
+                    </td>
+
+                    <td>
+                        {{ route.driver }}
+                    </td>
+
+                    <td>
+                        {{ route.route }}
+                    </td>
+
+                    <td>
+                        ₹{{ "%.2f"|format(route.fare) }}
+                    </td>
+
+                    <td>
+                        ₹{{ "%.2f"|format(route.expense) }}
+                    </td>
+
+                    <td class="profit">
+                        ₹{{ "%.2f"|format(route.profit) }}
+                    </td>
+
+                </tr>
+
+                {% else %}
+
+                <tr>
+
+                    <td colspan="7"
+                        class="empty">
+
+                        No routes added yet.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+
+{% endblock %}
