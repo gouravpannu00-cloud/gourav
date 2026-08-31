@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+💸 Add Expense
+</h1>
+
+
+<form
+class="form-box"
+method="POST">
+
+
+<label>
+Route
+</label>
+
+<select
+name="route_id"
+required>
+
+<option value="">
+Select Route
+</option>
+
+{% for route in routes %}
+
+<option value="{{ route.id }}">
+
+{{ route.trip_date }}
+
+-
+
+{{ route.route_from }}
+
+→
+
+{{ route.route_to }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<label>
+Expense Date
+</label>
+
+<input
+type="date"
+name="expense_date"
+required>
+
+
+<label>
+Expense Type
+</label>
+
+<select name="expense_type">
+
+<option>
+Diesel
+</option>
+
+<option>
+Toll
+</option>
+
+<option>
+Repair
+</option>
+
+<option>
+Driver Expense
+</option>
+
+<option>
+Food
+</option>
+
+<option>
+Parking
+</option>
+
+<option>
+Other
+</option>
+
+</select>
+
+
+<label>
+Amount
+</label>
+
+<input
+type="number"
+step="0.01"
+name="amount"
+required>
+
+
+<label>
+Description
+</label>
+
+<textarea
+name="description"
+placeholder="What expense happened?">
+</textarea>
+
+
+<button
+class="button"
+type="submit">
+
+Save Expense
+
+</button>
+
+</form>
+
+{% endblock %}
