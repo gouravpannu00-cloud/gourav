@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+<h1>
+💸 Expense Management
+</h1>
+
+<a class="button"
+href="{{ url_for('add_expense') }}">
+
++ Add Expense
+
+</a>
+
+</div>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>Route</th>
+
+<th>Type</th>
+
+<th>Amount</th>
+
+<th>Description</th>
+
+<th>Action</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for expense in expenses %}
+
+<tr>
+
+<td>
+{{ expense.expense_date }}
+</td>
+
+<td>
+
+{{ expense.route_from }}
+
+→
+
+{{ expense.route_to }}
+
+</td>
+
+<td>
+{{ expense.expense_type }}
+</td>
+
+<td>
+₹{{ "%.2f"|format(expense.amount) }}
+</td>
+
+<td>
+{{ expense.description }}
+</td>
+
+<td>
+
+<a class="delete"
+href="{{ url_for(
+    'delete_expense',
+    expense_id=expense.id
+) }}"
+onclick="return confirm(
+'Delete expense?'
+)">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
