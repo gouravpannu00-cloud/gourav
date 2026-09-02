@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="page-title">
+🛣️ Add Route
+</h1>
+
+
+<form
+class="form-box"
+method="POST">
+
+
+<label>
+Trip Date
+</label>
+
+<input
+type="date"
+name="trip_date"
+required>
+
+
+<label>
+Vehicle
+</label>
+
+<select
+name="vehicle_no"
+required>
+
+<option value="">
+Select Vehicle
+</option>
+
+{% for vehicle in vehicles %}
+
+<option value="{{ vehicle.vehicle_no }}">
+
+{{ vehicle.vehicle_no }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<label>
+Driver
+</label>
+
+<select name="driver_name">
+
+<option value="">
+Select Driver
+</option>
+
+{% for driver in drivers %}
+
+<option value="{{ driver.name }}">
+
+{{ driver.name }}
+
+</option>
+
+{% endfor %}
+
+</select>
+
+
+<label>
+From
+</label>
+
+<input
+name="route_from"
+placeholder="Rohtak"
+required>
+
+
+<label>
+To
+</label>
+
+<input
+name="route_to"
+placeholder="Delhi"
+required>
+
+
+<label>
+Fare
+</label>
+
+<input
+type="number"
+step="0.01"
+name="fare"
+placeholder="25000">
+
+
+<label>
+Notes
+</label>
+
+<textarea
+name="notes"></textarea>
+
+
+<button
+class="button"
+type="submit">
+
+Save Route
+
+</button>
+
+</form>
+
+{% endblock %}
