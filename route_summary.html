@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+<h1>
+📊 Route-wise Summary
+</h1>
+
+<a class="button"
+href="{{ url_for('add_route') }}">
+
++ Add Route
+
+</a>
+
+</div>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Date</th>
+
+<th>Vehicle</th>
+
+<th>Driver</th>
+
+<th>Route</th>
+
+<th>Fare</th>
+
+<th>Expense</th>
+
+<th>Profit</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for row in rows %}
+
+<tr>
+
+<td>
+{{ row.date }}
+</td>
+
+<td>
+{{ row.vehicle }}
+</td>
+
+<td>
+{{ row.driver }}
+</td>
+
+<td>
+{{ row.route }}
+</td>
+
+<td>
+₹{{ "%.2f"|format(row.fare) }}
+</td>
+
+<td>
+₹{{ "%.2f"|format(row.expense) }}
+</td>
+
+<td class="profit">
+
+₹{{ "%.2f"|format(row.profit) }}
+
+</td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+<td colspan="7"
+class="empty">
+
+No route data available.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
