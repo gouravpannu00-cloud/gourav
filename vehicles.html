@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="page-header">
+
+    <h1>🚚 Vehicle Management</h1>
+
+    <a class="button"
+       href="{{ url_for('add_vehicle') }}">
+
+        + Add Vehicle
+
+    </a>
+
+</div>
+
+
+<div class="table-container">
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Vehicle No.</th>
+
+<th>Model</th>
+
+<th>Type</th>
+
+<th>Owner</th>
+
+<th>Mobile</th>
+
+<th>Actions</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+{% for vehicle in vehicles %}
+
+<tr>
+
+<td>
+    <b>{{ vehicle.vehicle_no }}</b>
+</td>
+
+<td>
+    {{ vehicle.model }}
+</td>
+
+<td>
+    {{ vehicle.vehicle_type }}
+</td>
+
+<td>
+    {{ vehicle.owner }}
+</td>
+
+<td>
+    {{ vehicle.mobile }}
+</td>
+
+<td>
+
+<a class="edit"
+   href="{{ url_for(
+       'edit_vehicle',
+       vehicle_id=vehicle.id
+   ) }}">
+
+   Edit
+
+</a>
+
+
+<a class="delete"
+   href="{{ url_for(
+       'delete_vehicle',
+       vehicle_id=vehicle.id
+   ) }}"
+   onclick="return confirm(
+       'Delete this vehicle?'
+   )">
+
+   Delete
+
+</a>
+
+</td>
+
+</tr>
+
+{% else %}
+
+<tr>
+
+<td colspan="6"
+    class="empty">
+
+No vehicles found.
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</tbody>
+
+</table>
+
+</div>
+
+{% endblock %}
