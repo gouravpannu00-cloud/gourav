@@ -1,11 +1,5 @@
       #   QUES.  1 _______________________
 
-from os import name
-
-
-from unicodedata import name
-
-
 class student:
     def __init__(self,name,age,marks):
         self.name = name
@@ -72,3 +66,4 @@ p2 = person("Jatin", 30)
 
 p1.display()
 p2.display()
+
