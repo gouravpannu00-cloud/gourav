@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Tutor - English Tutor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">ET</span>
+                English Tutor
+            </a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="lessons.html" class="nav-link">Lessons</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="vocabulary.html" class="nav-link">Vocabulary</a></li>
+                <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                <li><a href="ai-tutor.html" class="nav-link active">AI Tutor</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="#" class="nav-link btn-logout" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content chat-page">
+        <div class="container">
+            <div class="page-header">
+                <h1>AI English Tutor</h1>
+                <p>Practice writing and get instant, polite corrections</p>
+            </div>
+
+            <div class="chat-container">
+                <div class="chat-sidebar">
+                    <h3>Tips</h3>
+                    <ul class="tips-list">
+                        <li>Write workplace emails or messages</li>
+                        <li>Ask questions about grammar</li>
+                        <li>Practice professional phrases</li>
+                        <li>Get corrections with explanations</li>
+                    </ul>
+                    <h3>Example Prompts</h3>
+                    <div class="example-prompts">
+                        <button class="example-btn">"Could you please review my code?"</button>
+                        <button class="example-btn">"I have finish the task yesterday"</button>
+                        <button class="example-btn">"their is a bug in the login"</button>
+                        <button class="example-btn">"i think we should deploy now"</button>
+                    </div>
+                </div>
+
+                <div class="chat-main">
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message tutor-message">
+                            <div class="message-avatar">🤖</div>
+                            <div class="message-content">
+                                <p>Hello! I am your English Tutor. Write a sentence or message, and I will help you improve it. I can correct grammar, suggest professional alternatives, and explain any mistakes.</p>
+                                <p><strong>Try writing:</strong> An email to your team, a Slack message, or any professional communication!</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chat-input-container">
+                        <textarea id="chatInput" placeholder="Type your message here... (e.g., write an email asking for help)" rows="3"></textarea>
+                        <button class="btn btn-primary" id="sendMessageBtn">Send</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 English Tutor</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/ai-tutor.js"></script>
+    <script>
+        protectRoute();
+        setupChat();
+        setupLogout();
+    </script>
+</body>
+</html>
