@@ -3,203 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Voice Assistant</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>English Tutor - Professional English for Developers</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="app-container">
-        <header class="app-header">
-            <div class="logo">
-                <div class="logo-icon">🎙️</div>
-                <div class="logo-text">
-                    <h1>Voice Assistant</h1>
-                    <span class="status-indicator">
-                        <span class="status-dot online"></span>
-                        <span class="status-text">Online</span>
-                    </span>
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">ET</span>
+                English Tutor
+            </a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="lessons.html" class="nav-link">Lessons</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="vocabulary.html" class="nav-link">Vocabulary</a></li>
+                <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                <li><a href="ai-tutor.html" class="nav-link">AI Tutor</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="#" class="nav-link btn-logout" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Master Professional English for Software Development</h1>
+                <p class="hero-subtitle">
+                    Improve your English communication skills for internships, coding teams,
+                    meetings, emails, interviews, and documentation.
+                </p>
+                <div class="hero-buttons">
+                    <a href="signup.html" class="btn btn-primary">Get Started Free</a>
+                    <a href="login.html" class="btn btn-secondary">Login</a>
                 </div>
             </div>
-            <div class="header-actions">
-                <button class="icon-btn theme-toggle" id="themeToggle" title="Toggle theme">
-                    <span class="theme-icon">🌙</span>
-                </button>
-                <button class="icon-btn settings-btn" id="settingsBtn" title="Settings">
-                    ⚙️
-                </button>
+        </section>
+
+        <section class="features">
+            <h2>What You Will Learn</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📧</div>
+                    <h3>Email Writing</h3>
+                    <p>Write professional emails to teammates, managers, and clients.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">💬</div>
+                    <h3>Speaking Practice</h3>
+                    <p>Practice standup updates, presentations, and team communication.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Interview Prep</h3>
+                    <p>Prepare for technical interviews with common questions and answers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Technical Vocabulary</h3>
+                    <p>Learn essential terms for Git, APIs, databases, and web development.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Interactive Quizzes</h3>
+                    <p>Test your knowledge with multiple question types.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI Chat Tutor</h3>
+                    <p>Get real-time corrections and professional writing suggestions.</p>
+                </div>
             </div>
-        </header>
+        </section>
 
-        <main class="main-content">
-            <aside class="sidebar left-sidebar" id="leftSidebar">
-                <div class="sidebar-section">
-                    <h3>Quick Actions</h3>
-                    <div class="quick-actions">
-                        <button class="quick-action-btn" data-command="What is the time?">
-                            <span class="action-icon">🕐</span>
-                            <span>Time</span>
-                        </button>
-                        <button class="quick-action-btn" data-command="What is the date today?">
-                            <span class="action-icon">📅</span>
-                            <span>Date</span>
-                        </button>
-                        <button class="quick-action-btn" data-command="Tell me a joke">
-                            <span class="action-icon">😂</span>
-                            <span>Joke</span>
-                        </button>
-                        <button class="quick-action-btn" data-command="Calculate 25 times 4">
-                            <span class="action-icon">🧮</span>
-                            <span>Calculate</span>
-                        </button>
-                        <button class="quick-action-btn" data-command="Search for Python tutorials">
-                            <span class="action-icon">🌐</span>
-                            <span>Search</span>
-                        </button>
-                        <button class="quick-action-btn" data-command="Save note: Buy groceries">
-                            <span class="action-icon">📝</span>
-                            <span>Note</span>
-                        </button>
-                    </div>
-                </div>
+        <section class="topics">
+            <h2>Topics Covered</h2>
+            <div class="topics-list">
+                <span class="topic-tag">Git & GitHub</span>
+                <span class="topic-tag">API Documentation</span>
+                <span class="topic-tag">Bug Reports</span>
+                <span class="topic-tag">Pull Requests</span>
+                <span class="topic-tag">Standup Updates</span>
+                <span class="topic-tag">Slack Messages</span>
+                <span class="topic-tag">Client Communication</span>
+                <span class="topic-tag">Technical Writing</span>
+            </div>
+        </section>
+    </main>
 
-                <div class="sidebar-section">
-                    <h3>Recent Commands</h3>
-                    <div class="recent-commands" id="recentCommands">
-                        <p class="empty-state">No commands yet. Start speaking!</p>
-                    </div>
-                </div>
+    <footer class="footer">
+        <p>&copy; 2026 English Tutor. Built for developers, by developers.</p>
+    </footer>
 
-                <div class="sidebar-section">
-                    <h3>Saved Notes</h3>
-                    <div class="saved-notes" id="savedNotes">
-                        <p class="empty-state">No notes saved yet.</p>
-                    </div>
-                </div>
-            </aside>
-
-            <section class="center-panel">
-                <div class="mobile-tabs">
-                    <button class="mobile-tab" data-target="left" title="Quick Actions & History">📋</button>
-                    <button class="mobile-tab active-mobile-tab" data-target="mic" title="Microphone">🎙️</button>
-                    <button class="mobile-tab" data-target="right" title="Status & Stats">📊</button>
-                </div>
-
-                <div class="greeting" id="greeting">
-                    <h2>Hello! I am your Voice Assistant</h2>
-                    <p>Click the microphone and start speaking</p>
-                </div>
-
-                <div class="mic-container">
-                    <button class="mic-button" id="micButton" title="Click to speak or press Space">
-                        <div class="mic-rings">
-                            <span class="ring ring-1"></span>
-                            <span class="ring ring-2"></span>
-                            <span class="ring ring-3"></span>
-                        </div>
-                        <div class="mic-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="9" y="1" width="6" height="11" rx="3" />
-                                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-                                <line x1="12" y1="19" x2="12" y2="23" />
-                                <line x1="8" y1="23" x2="16" y2="23" />
-                            </svg>
-                        </div>
-                        <div class="mic-status" id="micStatus"></div>
-                    </button>
-                </div>
-
-                <div class="text-fallback">
-                    <input type="text" id="textCommand" placeholder="Type a command if voice is unavailable..." autocomplete="off">
-                    <button id="sendTextCommand" class="send-btn">Send</button>
-                </div>
-
-                <div class="waveform" id="waveform">
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                    <div class="waveform-bar"></div>
-                </div>
-
-                <div class="conversation" id="conversation">
-                    <div class="welcome-message">
-                        <div class="assistant-avatar">🤖</div>
-                        <div class="message assistant-message">
-                            <p>Hello! I am your Voice Assistant. Click the microphone and try saying:</p>
-                            <ul>
-                                <li>"What time is it?"</li>
-                                <li>"Tell me a joke"</li>
-                                <li>"Save note: Buy groceries"</li>
-                                <li>"Search for Python tutorials"</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <aside class="sidebar right-sidebar" id="rightSidebar">
-                <div class="sidebar-section">
-                    <h3>Assistant Status</h3>
-                    <div class="status-card" id="statusCard">
-                        <div class="status-item">
-                            <span class="status-label">State</span>
-                            <span class="status-value" id="assistantState">READY</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-label">Microphone</span>
-                            <span class="status-value" id="micState">Available</span>
-                        </div>
-                        <div class="status-item">
-                            <span class="status-label">Session</span>
-                            <span class="status-value" id="sessionTime">00:00</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3>Statistics</h3>
-                    <div class="stats-grid" id="statsGrid">
-                        <div class="stat-card">
-                            <span class="stat-number" id="commandsToday">0</span>
-                            <span class="stat-label">Commands Today</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number" id="notesCount">0</span>
-                            <span class="stat-label">Notes Saved</span>
-                        </div>
-                        <div class="stat-card">
-                            <span class="stat-number" id="totalCommands">0</span>
-                            <span class="stat-label">Total Commands</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <h3>Database</h3>
-                    <div class="db-status">
-                        <span class="db-indicator connected"></span>
-                        <span>SQLite Connected</span>
-                    </div>
-                </div>
-
-                <div class="sidebar-section">
-                    <button class="clear-btn" id="clearConversation">
-                        🗑️ Clear Conversation
-                    </button>
-                </div>
-            </aside>
-        </main>
-    </div>
-
-    <div class="toast-container" id="toastContainer"></div>
-
-    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="js/auth.js"></script>
+    <script>
+        // Redirect to dashboard if already logged in
+        if (isLoggedIn() && !window.location.pathname.includes('dashboard')) {
+            // User is logged in, show appropriate navigation
+        }
+    </script>
 </body>
 </html>
