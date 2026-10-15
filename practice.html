@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice - English Tutor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">ET</span>
+                English Tutor
+            </a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="lessons.html" class="nav-link">Lessons</a></li>
+                <li><a href="practice.html" class="nav-link active">Practice</a></li>
+                <li><a href="vocabulary.html" class="nav-link">Vocabulary</a></li>
+                <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                <li><a href="ai-tutor.html" class="nav-link">AI Tutor</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="#" class="nav-link btn-logout" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Practice</h1>
+                <p>Improve your speaking and writing skills</p>
+            </div>
+
+            <div class="practice-tabs">
+                <button class="tab-btn active" data-tab="speaking">Speaking Practice</button>
+                <button class="tab-btn" data-tab="writing">Writing Practice</button>
+                <button class="tab-btn" data-tab="interview">Interview Prep</button>
+                <button class="tab-btn" data-tab="reading">Reading Practice</button>
+            </div>
+
+            <div class="tab-content" id="speakingTab">
+                <h2>Speaking Scenarios</h2>
+                <p class="tab-description">Practice speaking in common workplace situations. Read the scenario, prepare your response, then check the sample answer.</p>
+                <div class="scenario-list" id="scenarioList">
+                    <p class="loading">Loading scenarios...</p>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="writingTab">
+                <h2>Writing Practice</h2>
+                <p class="tab-description">Practice writing professional communications. Choose a prompt and write your response.</p>
+                <div class="writing-prompts" id="writingPrompts">
+                    <p class="loading">Loading prompts...</p>
+                </div>
+                <div class="writing-area hidden" id="writingArea">
+                    <h3 id="writingPromptTitle"></h3>
+                    <p id="writingPromptText" class="prompt-text"></p>
+                    <textarea id="writingSubmission" rows="10" placeholder="Write your response here..."></textarea>
+                    <button class="btn btn-primary" id="submitWritingBtn">Submit for Review</button>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="interviewTab">
+                <h2>Interview Preparation</h2>
+                <p class="tab-description">Practice common developer interview questions. Read the question, think about your answer, then reveal the sample response.</p>
+                <div class="interview-list" id="interviewList">
+                    <p class="loading">Loading questions...</p>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="readingTab">
+                <h2>Reading Practice</h2>
+                <p class="tab-description">Improve your reading comprehension with technical articles and documentation.</p>
+                <div class="article-list" id="articleList">
+                    <p class="loading">Loading articles...</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 English Tutor</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/practice.js"></script>
+    <script>
+        protectRoute();
+        loadPracticeContent();
+        setupLogout();
+    </script>
+</body>
+</html>
