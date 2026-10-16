@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary - English Tutor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">ET</span>
+                English Tutor
+            </a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="dashboard.html" class="nav-link">Dashboard</a></li>
+                <li><a href="lessons.html" class="nav-link">Lessons</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="vocabulary.html" class="nav-link active">Vocabulary</a></li>
+                <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                <li><a href="ai-tutor.html" class="nav-link">AI Tutor</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="#" class="nav-link btn-logout" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="page-header">
+                <h1>Technical Vocabulary</h1>
+                <p>Master essential English terms for software development</p>
+            </div>
+
+            <div class="filter-bar">
+                <button class="filter-btn active" data-category="all">All</button>
+                <button class="filter-btn" data-category="general">General</button>
+                <button class="filter-btn" data-category="git">Git</button>
+                <button class="filter-btn" data-category="devops">DevOps</button>
+                <button class="filter-btn" data-category="api">API</button>
+                <button class="filter-btn" data-category="architecture">Architecture</button>
+            </div>
+
+            <div class="vocab-controls">
+                <input type="text" id="vocabSearch" placeholder="Search vocabulary..." class="search-input">
+                <button class="btn btn-secondary" id="startReviewBtn">Start Review Session</button>
+            </div>
+
+            <div class="vocab-grid" id="vocabList">
+                <p class="loading">Loading vocabulary...</p>
+            </div>
+
+            <div class="review-modal hidden" id="reviewModal">
+                <div class="modal-content">
+                    <button class="modal-close" id="reviewClose">&times;</button>
+                    <div class="review-card" id="reviewCard">
+                        <p class="review-word" id="reviewWord"></p>
+                        <p class="review-definition" id="reviewDefinition"></p>
+                        <p class="review-example" id="reviewExample"></p>
+                        <div class="review-actions">
+                            <button class="btn btn-secondary" id="reviewAgainBtn">Need Practice</button>
+                            <button class="btn btn-primary" id="reviewKnownBtn">I Know This</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 English Tutor</p>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/vocabulary.js"></script>
+    <script>
+        protectRoute();
+        loadVocabulary();
+        setupLogout();
+    </script>
+</body>
+</html>
