@@ -1,441 +1,121 @@
-{% extends "base.html" %}
-
-{% block title %}
-Dashboard - TMS V4.4
-{% endblock %}
-
-
-{% block content %}
-
-
-<div class="dashboard-title">
-
-    <div>
-
-        <h1>
-            🚚 Transport Management System
-        </h1>
-
-        <p>
-            Complete Transport Dashboard
-        </p>
-
-    </div>
-
-</div>
-
-
-<!-- ADD BUTTONS -->
-
-<div class="add-grid">
-
-    <a class="add-card"
-       href="{{ url_for('add_vehicle') }}">
-
-        <span>🚚</span>
-
-        <b>Add Vehicle</b>
-
-        <small>
-            Vehicle + Documents
-        </small>
-
-    </a>
-
-
-    <a class="add-card"
-       href="{{ url_for('add_driver') }}">
-
-        <span>👨‍✈️</span>
-
-        <b>Add Driver</b>
-
-        <small>
-            Driver Details
-        </small>
-
-    </a>
-
-
-    <a class="add-card"
-       href="{{ url_for('add_route') }}">
-
-        <span>🛣️</span>
-
-        <b>Add Route</b>
-
-        <small>
-            Route + Fare
-        </small>
-
-    </a>
-
-
-    <a class="add-card"
-       href="{{ url_for('add_expense') }}">
-
-        <span>💸</span>
-
-        <b>Add Expense</b>
-
-        <small>
-            Fuel / Toll / Repair
-        </small>
-
-    </a>
-
-
-    <a class="add-card"
-       href="{{ url_for('add_attendance') }}">
-
-        <span>📅</span>
-
-        <b>Add Attendance</b>
-
-        <small>
-            Full / Half Day
-        </small>
-
-    </a>
-
-
-    <a class="add-card"
-       href="{{ url_for('route_summary') }}">
-
-        <span>📊</span>
-
-        <b>Route Summary</b>
-
-        <small>
-            Date + Fare + Profit
-        </small>
-
-    </a>
-
-</div>
-
-
-<!-- MONTH -->
-
-<h2 class="section-title">
-
-    📅 Monthly Summary
-
-    <span>
-        {{ current_month }}
-
-    </span>
-
-</h2>
-
-
-<!-- 3 ROW x 2 COLUMN -->
-
-<div class="dashboard-grid">
-
-
-    <a class="dashboard-card"
-       href="{{ url_for('vehicles') }}">
-
-        <h3>
-            🚚 Vehicles
-        </h3>
-
-        <strong>
-            {{ vehicle_count }}
-        </strong>
-
-        <span>
-            View Vehicles →
-        </span>
-
-    </a>
-
-
-    <a class="dashboard-card"
-       href="{{ url_for('drivers') }}">
-
-        <h3>
-            👨‍✈️ Drivers
-        </h3>
-
-        <strong>
-            {{ driver_count }}
-        </strong>
-
-        <span>
-            View Drivers →
-        </span>
-
-    </a>
-
-
-    <a class="dashboard-card"
-       href="{{ url_for('routes') }}">
-
-        <h3>
-            🛣️ Routes
-        </h3>
-
-        <strong>
-            {{ route_count }}
-        </strong>
-
-        <span>
-            View Routes →
-        </span>
-
-    </a>
-
-
-    <a class="dashboard-card money-card"
-       href="{{ url_for('route_summary') }}">
-
-        <h3>
-            💰 Monthly Fare
-        </h3>
-
-        <strong>
-            ₹{{ "%.2f"|format(monthly_fare) }}
-        </strong>
-
-        <span>
-            Current Month
-        </span>
-
-    </a>
-
-
-    <a class="dashboard-card money-card"
-       href="{{ url_for('route_summary') }}">
-
-        <h3>
-            💸 Monthly Expense
-        </h3>
-
-        <strong>
-            ₹{{ "%.2f"|format(monthly_expense) }}
-        </strong>
-
-        <span>
-            Current Month
-        </span>
-
-    </a>
-
-
-    <a class="dashboard-card money-card"
-       href="{{ url_for('route_summary') }}">
-
-        <h3>
-            📈 Monthly Profit
-        </h3>
-
-        <strong>
-            ₹{{ "%.2f"|format(monthly_profit) }}
-        </strong>
-
-        <span>
-            Fare - Expense
-        </span>
-
-    </a>
-
-</div>
-
-
-<!-- DOCUMENT NOTIFICATION -->
-
-<div class="notification-section">
-
-    <div class="section-heading">
-
-        <h2>
-            🔔 Vehicle Document Notifications
-        </h2>
-
-        <a href="{{ url_for('vehicles') }}">
-            Manage Documents →
-        </a>
-
-    </div>
-
-
-    {% if document_notifications %}
-
-        {% for notification
-             in document_notifications %}
-
-            <div class="notification
-                {{ notification.status }}">
-
-                {% if notification.status == "expired" %}
-
-                    ❌
-
-                    <b>
-                        {{ notification.vehicle_no }}
-                    </b>
-
-                    -
-
-                    {{ notification.document_name }}
-
-                    expired on
-
-                    <b>
-                        {{ notification.valid_until }}
-                    </b>
-
-                {% else %}
-
-                    ⚠️
-
-                    <b>
-                        {{ notification.vehicle_no }}
-                    </b>
-
-                    -
-
-                    {{ notification.document_name }}
-
-                    expires on
-
-                    <b>
-                        {{ notification.valid_until }}
-                    </b>
-
-                    <span>
-
-                        {{ notification.days_left }}
-                        days left
-
-                    </span>
-
-                {% endif %}
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - English Tutor</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">
+                <span class="brand-icon">ET</span>
+                English Tutor
+            </a>
+            <button class="nav-toggle" id="navToggle">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="dashboard.html" class="nav-link active">Dashboard</a></li>
+                <li><a href="lessons.html" class="nav-link">Lessons</a></li>
+                <li><a href="practice.html" class="nav-link">Practice</a></li>
+                <li><a href="vocabulary.html" class="nav-link">Vocabulary</a></li>
+                <li><a href="quizzes.html" class="nav-link">Quizzes</a></li>
+                <li><a href="ai-tutor.html" class="nav-link">AI Tutor</a></li>
+                <li><a href="progress.html" class="nav-link">Progress</a></li>
+                <li><a href="settings.html" class="nav-link">Settings</a></li>
+                <li><a href="#" class="nav-link btn-logout" id="logoutBtn">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content dashboard">
+        <div class="container">
+            <div class="dashboard-header">
+                <h1 id="greeting">Welcome back!</h1>
+                <p id="dateDisplay"></p>
             </div>
 
-        {% endfor %}
+            <div class="stats-grid">
+                <div class="stat-card streak">
+                    <div class="stat-icon">🔥</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="streakValue">0</span>
+                        <span class="stat-label">Day Streak</span>
+                    </div>
+                </div>
+                <div class="stat-card lessons">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="lessonsValue">0/0</span>
+                        <span class="stat-label">Lessons</span>
+                    </div>
+                </div>
+                <div class="stat-card quizzes">
+                    <div class="stat-icon">✅</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="quizScore">0%</span>
+                        <span class="stat-label">Avg Score</span>
+                    </div>
+                </div>
+                <div class="stat-card words">
+                    <div class="stat-icon">💡</div>
+                    <div class="stat-info">
+                        <span class="stat-value" id="wordsValue">0</span>
+                        <span class="stat-label">Words Learned</span>
+                    </div>
+                </div>
+            </div>
 
-    {% else %}
+            <div class="progress-section">
+                <h2>Daily Goal Progress</h2>
+                <div class="progress-bar-container">
+                    <div class="progress-bar" id="dailyProgressBar"></div>
+                </div>
+                <p id="dailyGoalText">0 / 30 minutes today</p>
+            </div>
 
-        <div class="notification safe">
+            <div class="quick-actions">
+                <h2>Quick Actions</h2>
+                <div class="action-cards">
+                    <a href="lessons.html" class="action-card">
+                        <span class="action-icon">📖</span>
+                        <span class="action-title">Continue Learning</span>
+                    </a>
+                    <a href="practice.html" class="action-card">
+                        <span class="action-icon">🎤</span>
+                        <span class="action-title">Practice Speaking</span>
+                    </a>
+                    <a href="quizzes.html" class="action-card">
+                        <span class="action-icon">❓</span>
+                        <span class="action-title">Take a Quiz</span>
+                    </a>
+                    <a href="ai-tutor.html" class="action-card">
+                        <span class="action-icon">🤖</span>
+                        <span class="action-title">Chat with Tutor</span>
+                    </a>
+                </div>
+            </div>
 
-            ✅
-
-            No vehicle documents are
-            expiring within 30 days.
-
+            <div class="recent-activity">
+                <h2>Recent Activity</h2>
+                <div class="activity-list" id="activityList">
+                    <p class="empty-state">No recent activity yet. Start learning!</p>
+                </div>
+            </div>
         </div>
+    </main>
 
-    {% endif %}
+    <footer class="footer">
+        <p>&copy; 2026 English Tutor</p>
+    </footer>
 
-</div>
-
-
-<!-- ROUTE SUMMARY -->
-
-<div class="summary-box">
-
-    <div class="section-heading">
-
-        <h2>
-            🛣️ Recent Route Summary
-        </h2>
-
-        <a href="{{ url_for('route_summary') }}">
-            View All →
-        </a>
-
-    </div>
-
-
-    <div class="table-container">
-
-        <table>
-
-            <thead>
-
-                <tr>
-
-                    <th>Date</th>
-
-                    <th>Vehicle</th>
-
-                    <th>Driver</th>
-
-                    <th>Route</th>
-
-                    <th>Fare</th>
-
-                    <th>Expense</th>
-
-                    <th>Profit</th>
-
-                </tr>
-
-            </thead>
-
-
-            <tbody>
-
-                {% for route in recent_routes %}
-
-                <tr>
-
-                    <td>
-                        {{ route.date }}
-                    </td>
-
-                    <td>
-                        {{ route.vehicle }}
-                    </td>
-
-                    <td>
-                        {{ route.driver }}
-                    </td>
-
-                    <td>
-                        {{ route.route }}
-                    </td>
-
-                    <td>
-                        ₹{{ "%.2f"|format(route.fare) }}
-                    </td>
-
-                    <td>
-                        ₹{{ "%.2f"|format(route.expense) }}
-                    </td>
-
-                    <td class="profit">
-                        ₹{{ "%.2f"|format(route.profit) }}
-                    </td>
-
-                </tr>
-
-                {% else %}
-
-                <tr>
-
-                    <td colspan="7"
-                        class="empty">
-
-                        No routes added yet.
-
-                    </td>
-
-                </tr>
-
-                {% endfor %}
-
-            </tbody>
-
-        </table>
-
-    </div>
-
-</div>
-
-
-{% endblock %}
+    <script src="js/auth.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script>
+        protectRoute();
+        loadDashboard();
+        setupLogout();
+    </script>
+</body>
+</html>
